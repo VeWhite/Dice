@@ -14,15 +14,18 @@ import java.io.IOException;
 
 public class Dice extends PApplet {
 
+Die dice;
+
 public void setup()
 {
 	noLoop();
+	size(400, 400);
 }
 public void draw()
 {
 	background(0,0,0);
-	die = new Die(25, 25);
-	show();
+	dice = new Die(25, 25);
+	dice.show();
 }
 public void mousePressed()
 {
@@ -30,18 +33,77 @@ public void mousePressed()
 }
 class Die //models one single dice cube
 {
-	//variable declarations here
+	int myX, myY, j, i, myDots;
 	Die(int x, int y) //constructor
 	{
-		rect(25, 25, 50, 50);
+		myX = x;
+		myY = y;
+		roll();
+
 	}
 	public void roll()
 	{
-		//your code here
+		myDots = (int)(Math.random()*6) + 1;
 	}
 	public void show()
 	{
-		//your code here
+		for( j = 0; j <= 400; j += 100)
+		{
+			for ( i = 0; i <= 400; i += 100)
+			{
+				fill(255, 255, 255);
+		rect(j + myX, i + myY, 50, 50);
+			}
+		}
+		
+
+		if(myDots == 1)
+		{
+			fill(0);
+			ellipse(myX + 25, myY + 25, 10, 10);
+		}
+		if(myDots == 2)
+		{
+			fill(0);
+			ellipse(myX + 10, myY + 10, 10, 10);
+			ellipse(myX + 40, myY + 40, 10, 10);
+		} 
+		if(myDots == 3)
+		{
+			fill(0);
+			ellipse(myX + 10, myY + 10, 10, 10);
+			ellipse(myX + 25, myY + 25, 10, 10);
+			ellipse(myX + 40, myY + 40, 10, 10);
+		}
+		if(myDots == 4)
+		{
+			fill(0);
+			ellipse(myX + 10, myY + 10, 10, 10);
+			ellipse(myX + 10, myY + 40, 10, 10);
+			ellipse(myX + 40, myY + 10, 10, 10);
+			ellipse(myX + 40, myY + 40, 10, 10);
+		}
+		if(myDots == 5)
+		{
+			fill(0);
+			ellipse(myX + 10, myY + 10, 10, 10);
+			ellipse(myX + 10, myY + 40, 10, 10);
+			ellipse(myX + 40, myY + 10, 10, 10);
+			ellipse(myX + 40, myY + 40, 10, 10);
+			ellipse(myX + 25, myY + 25, 10, 10);
+		}
+		if(myDots == 6)
+		{
+			fill(0);
+			ellipse(myX + 10, myY + 10, 10, 10);
+			ellipse(myX + 10, myY + 40, 10, 10);
+			ellipse(myX + 40, myY + 10, 10, 10);
+			ellipse(myX + 40, myY + 40, 10, 10);
+			ellipse(myX + 10, myY + 25, 10, 10);
+			ellipse(myX + 40, myY + 25, 10, 10);
+
+		}
+
 	}
 }
   static public void main(String[] passedArgs) {
